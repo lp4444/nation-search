@@ -14,6 +14,8 @@ function App() {
   const [pageNations, setPageNations] = useState([]);
 
   const [searchterm, setSearchTerm] = useState("a");
+  const [page, setPage] = useState(0);
+  const [curtPgNation, setCurtPgNation] = useState([]);
 
   const fetchNations = async () => {
     setLoading(true);
@@ -23,10 +25,10 @@ function App() {
       const response = await fetch(`${urlFetch}${searchterm}`);
       const data = await response.json();
 
-      console.log(data);
+      console.log("data", data);
       setNations(data);
-      setPageNations(paginate(nations));
-
+      setPageNations(paginate(data));
+      console.log("page", pageNations);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -38,10 +40,18 @@ function App() {
     fetchNations();
   }, [searchterm]);
 
+  // useEffect(() => {
+  //   setPageNations(paginate(nations));
+  //   console.log("page", pageNations);
+  // }, [nations]);
+
+  useEffect(() => {
+    setCurtPgNation(pageNations[page]);
+  }, [loading, page, pageNations]);
   return (
     <>
       <Search setSearchTerm={setSearchTerm} />
-      {/* <NationList /> */}
+      <NationList loading={loading} curtPgNation={curtPgNation} />
       {/* <Buttons /> */}
     </>
   );
