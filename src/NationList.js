@@ -1,2 +1,5 @@
 import React from "react";
-import National from "./National";
+import Nation from "./Nation";
+
+const NationList = () => {};
+export default NationList;
