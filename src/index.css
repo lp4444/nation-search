@@ -47,6 +47,7 @@ Variables
   --max-width: 40rem;
   --small-Width: 85vw;
   --fixed-width: 620px;
+  --modal-width: 740px;
 }
 /*
 =============== 
@@ -212,7 +213,7 @@ p {
 .page-btn {
   width: 2rem;
   height: 2rem;
-  color: var(--clr-grey-3);
+  color: var(--clr-red-dark);
   /* background: var(--clr-primary-7); */
   background: transparent;
   border-color: transparent;
@@ -224,4 +225,55 @@ p {
 .page-active {
   background: var(--clr-primary-4);
   color: var(--clr-white);
+}
+.search-btn {
+  width: 3rem;
+  height: 2rem;
+  color: var(--clr-grey-3);
+  /* background: var(--clr-primary-7); */
+  background: var(--clr-green-light);
+  border-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: var(--transition);
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  transition: var(--transition);
+  visibility: hidden;
+  z-index: -1;
+}
+
+.show-modal {
+  visibility: visible;
+  z-index: 10;
+}
+.modal-container {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  width: 90vw;
+  height: 60vh;
+  max-width: var(--modal-width);
+  text-align: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.close-modal-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-red-dark);
+  cursor: pointer;
 }

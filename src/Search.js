@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Search = ({ setSearchTerm, handleDownClick, handleUpClick }) => {
+const Search = ({
+  setSearchTerm,
+  handleDownClick,
+  handleUpClick,
+  curtPgNation,
+}) => {
   const nationValue = useRef("");
 
   function handleSubmit(e) {
@@ -24,8 +29,23 @@ const Search = ({ setSearchTerm, handleDownClick, handleUpClick }) => {
           />
         </div>
       </form>
-      <button onClick={handleUpClick}>正序</button>
-      <button onClick={handleDownClick}>反序</button>
+      <div className="btn-container">
+        <button
+          className="search-btn"
+          onClick={handleUpClick}
+          disabled={!curtPgNation}
+        >
+          正序
+        </button>
+
+        <button
+          className="page-btn"
+          onClick={handleDownClick}
+          disabled={!curtPgNation}
+        >
+          反序
+        </button>
+      </div>
     </section>
   );
 };

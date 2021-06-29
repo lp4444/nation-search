@@ -1,7 +1,7 @@
 import React from "react";
 import Nation from "./Nation";
 
-const NationList = ({ loading, curtPgNation }) => {
+const NationList = ({ loading, curtPgNation, handleModal }) => {
   if (loading) {
     return <p>Loading</p>;
   } else if (!curtPgNation) {
@@ -9,9 +9,9 @@ const NationList = ({ loading, curtPgNation }) => {
   }
   return (
     <div className="list-container">
-      {true &&
+      {!loading &&
         curtPgNation.map((item, index) => {
-          return <Nation key={index} {...item} />;
+          return <Nation key={index} {...item} handleModal={handleModal} />;
         })}
     </div>
   );

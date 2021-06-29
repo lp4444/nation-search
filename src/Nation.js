@@ -8,6 +8,7 @@ const Nation = ({
   nativeName,
   altSpellings,
   callingCodes,
+  handleModal,
 }) => {
   // const str={altSpellings}.split()
   return (
@@ -15,7 +16,7 @@ const Nation = ({
       <img src={flag} alt={name} className="img-container" />
       <div className="nation-footer">
         <header>
-          <h6>國家名稱:{name}</h6>
+          <h6 onClick={() => handleModal({ name })}>國家名稱:{name}</h6>
           {/* <h4>國際電話區號{callingCodes}</h4> */}
         </header>
         <h6>母語名稱:{nativeName}</h6>
