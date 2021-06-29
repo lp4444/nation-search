@@ -110,7 +110,12 @@ function App() {
         handleUpClick={handleUpClick}
       />
       <NationList loading={loading} curtPgNation={curtPgNation} />
-      {/* <Buttons /> */}
+      <Buttons
+        loading={loading}
+        setPage={setPage}
+        pageNations={pageNations}
+        page={page}
+      />
     </>
   );
 }
