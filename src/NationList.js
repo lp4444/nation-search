@@ -9,9 +9,10 @@ const NationList = ({ loading, curtPgNation }) => {
   }
   return (
     <div className="list-container">
-      {curtPgNation.map((item, index) => {
-        return <Nation key={index} {...item} />;
-      })}
+      {true &&
+        curtPgNation.map((item, index) => {
+          return <Nation key={index} {...item} />;
+        })}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Search = ({ setSearchTerm }) => {
+const Search = ({ setSearchTerm, handleDownClick, handleUpClick }) => {
   const nationValue = useRef("");
 
   function handleSubmit(e) {
@@ -9,6 +9,7 @@ const Search = ({ setSearchTerm }) => {
   const filterNation = () => {
     setSearchTerm(nationValue.current.value);
   };
+
   return (
     <section className="section search">
       <form className="search-form" onSubmit={handleSubmit}>
@@ -23,8 +24,8 @@ const Search = ({ setSearchTerm }) => {
           />
         </div>
       </form>
-      <button>正序</button>
-      <button>反序</button>
+      <button onClick={handleUpClick}>正序</button>
+      <button onClick={handleDownClick}>反序</button>
     </section>
   );
 };

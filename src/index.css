@@ -172,9 +172,10 @@ p {
 }
 .img-container {
   object-fit: cover;
-  /* height: 150px; */
+  /* height: 230px; */
   height: 100%;
-  width: 250px;
+  width: 100%;
+  /* width: 250px; */
   border: 0.25rem solid var(--clr-gold);
   border-top-left-radius: var(--radius);
   border-bottom-left-radius: var(--radius);

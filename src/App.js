@@ -17,6 +17,52 @@ function App() {
   const [page, setPage] = useState(0);
   const [curtPgNation, setCurtPgNation] = useState([]);
 
+  const handleDownClick = () => {
+    if (nations) {
+      setLoading(true);
+      nations.sort(function (a, b) {
+        let nameA = a.name.toUpperCase();
+        let nameB = b.name.toUpperCase();
+
+        if (nameA < nameB) {
+          return 1;
+        }
+        if (nameA > nameB) {
+          return -1;
+        }
+        return 0;
+      });
+      setLoading(false);
+    }
+
+    console.log("nations", nations);
+    setPageNations(paginate(nations));
+    setPage(0);
+  };
+
+  const handleUpClick = () => {
+    if (nations) {
+      setLoading(true);
+      nations.sort(function (a, b) {
+        let nameA = a.name.toUpperCase();
+        let nameB = b.name.toUpperCase();
+
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+      setLoading(false);
+    }
+
+    setPageNations(paginate(nations));
+
+    setPage(0);
+  };
+
   const fetchNations = async () => {
     setLoading(true);
     try {
@@ -28,7 +74,7 @@ function App() {
       console.log("data", data);
       setNations(data);
       setPageNations(paginate(data));
-      console.log("page", pageNations);
+
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -41,16 +87,28 @@ function App() {
   }, [searchterm]);
 
   // useEffect(() => {
+  //   console.log("appnations", nations);
   //   setPageNations(paginate(nations));
-  //   console.log("page", pageNations);
+  //   console.log("apppageNations", pageNations);
+  //   setPage(0);
+  //   setCurtPgNation(pageNations[page]);
   // }, [nations]);
+
+  // useEffect(() => {
+  //   setLoading(loading);
+  // }, [loading]);
 
   useEffect(() => {
     setCurtPgNation(pageNations[page]);
+    console.log("curtPgNationapp", curtPgNation);
   }, [loading, page, pageNations]);
   return (
     <>
-      <Search setSearchTerm={setSearchTerm} />
+      <Search
+        setSearchTerm={setSearchTerm}
+        handleDownClick={handleDownClick}
+        handleUpClick={handleUpClick}
+      />
       <NationList loading={loading} curtPgNation={curtPgNation} />
       {/* <Buttons /> */}
     </>
